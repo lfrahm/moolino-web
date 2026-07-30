@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Moolino"
+  description="Moolino entwickelt eine sanfte, technische Lösung zur Vergrämung von Maulwürfen."
+>
+  <section class="hero">
+    <div class="hero__inner shell">
+      <div class="hero__copy">
+        <h1>Ein ruhigerer Garten.<br />Im Einklang mit der Natur.</h1>
+        <p class="hero__lede">
+          Moolino entwickelt eine sanfte, technische Lösung zur Vergrämung von
+          Maulwürfen – derzeit in Vorbereitung.
+        </p>
+        <div class="hero__actions">
+          <a class="button" href="#projekt">
+            Projekt entdecken
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+            >
+              <path d="M5 12h14m-5-5 5 5-5 5"></path>
+            </svg>
+          </a>
+          <span class="development-status">Frühe Entwicklungsphase</span>
+        </div>
+      </div>
+
+      <div class="nature-signal" aria-hidden="true">
+        <div class="sprout">
+          <span class="sprout__stem"></span>
+          <span class="sprout__leaf sprout__leaf--left"></span>
+          <span class="sprout__leaf sprout__leaf--right"></span>
+        </div>
+        <div class="soil-line"></div>
+        <span class="signal signal--one"></span>
+        <span class="signal signal--two"></span>
+        <span class="signal signal--three"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="readiness" id="projekt">
+    <div class="readiness__inner shell">
+      <div class="readiness__mark" aria-hidden="true">
+        <span></span>
+      </div>
+      <div>
+        <h2>Bereit für die nächste Wachstumsphase</h2>
+        <p>
+          Diese Website bildet die technische Grundlage für
+          Produktinformationen, Tests und den späteren Marktstart.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

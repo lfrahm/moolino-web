@@ -1,0 +1,71 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title === "Moolino" ? title : `${title} | Moolino`;
+const isIndexable = import.meta.env.PUBLIC_ALLOW_INDEXING === "true";
+const path = Astro.url.pathname;
+
+const navItems = [
+  { href: "/", label: "Start" },
+  { href: "/impressum/", label: "Impressum" },
+  { href: "/datenschutz/", label: "Datenschutz" },
+];
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={isIndexable ? "index, follow" : "noindex, nofollow"}
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
+    <header class="site-header">
+      <div class="site-header__inner shell">
+        <a class="wordmark" href="/" aria-label="Moolino Startseite">moolino</a>
+
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                aria-current={path === item.href ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner shell">
+        <p>© {new Date().getFullYear()} Moolino</p>
+        <nav aria-label="Rechtliches">
+          <a href="/impressum/">Impressum</a>
+          <a href="/datenschutz/">Datenschutz</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

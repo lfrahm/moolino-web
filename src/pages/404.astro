@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Seite nicht gefunden"
+  description="Die aufgerufene Seite wurde nicht gefunden."
+>
+  <section class="not-found shell">
+    <p class="page-label">Fehler 404</p>
+    <h1>Hier wächst noch nichts.</h1>
+    <p>
+      Die gesuchte Seite existiert nicht oder wurde an einen anderen Ort
+      verschoben.
+    </p>
+    <a class="button" href="/">
+      Zur Startseite
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+        <path d="M5 12h14m-5-5 5 5-5 5"></path>
+      </svg>
+    </a>
+  </section>
+</BaseLayout>
