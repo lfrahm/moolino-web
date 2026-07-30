@@ -90,12 +90,15 @@ svg {
 }
 
 .wordmark {
+  display: block;
+  width: clamp(9rem, 15vw, 12rem);
   border-radius: 0.2rem;
-  font-size: clamp(1.75rem, 3vw, 2.45rem);
-  font-weight: 750;
-  letter-spacing: -0.05em;
-  line-height: 1;
-  text-decoration: none;
+}
+
+.wordmark__image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .site-nav,
