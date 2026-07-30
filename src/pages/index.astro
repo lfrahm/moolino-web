@@ -1,61 +1,496 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const advantages = [
+  {
+    title: "Wetterfest gedacht",
+    copy: "Das Gehäuse wird für den dauerhaften Einsatz im Garten entwickelt.",
+    icon: "weather",
+  },
+  {
+    title: "Smart steuerbar",
+    copy: "Betrieb und Einstellungen sollen sich später passend zur Situation anpassen lassen.",
+    icon: "signal",
+  },
+  {
+    title: "Ohne Gift",
+    copy: "Das geplante Wirkprinzip kommt ohne chemische Wirkstoffe aus.",
+    icon: "leaf",
+  },
+  {
+    title: "Ohne Fallen",
+    copy: "Moolino ist als Vergrämungslösung gedacht – nicht zum Fangen oder Töten.",
+    icon: "open",
+  },
+];
+
+const faqs = [
+  {
+    question: "Was ist Moolino?",
+    answer:
+      "Moolino ist ein Entwicklungsprojekt für ein technisches Gerät zur Maulwurfvergrämung im Garten. Das Gerät befindet sich derzeit im Prototypenstadium.",
+  },
+  {
+    question: "Wie soll das Prinzip funktionieren?",
+    answer:
+      "Moolino soll wiederkehrende Vibrationen und Schallimpulse in den Boden einbringen. Diese mechanischen Impulse breiten sich im Erdreich aus. Wie Tiere darauf reagieren, kann von Boden, Umgebung und Anwendung abhängen und wird im Rahmen der Entwicklung weiter untersucht.",
+  },
+  {
+    question: "Ist Moolino bereits erhältlich?",
+    answer:
+      "Nein. Moolino ist noch nicht im Verkauf und es werden keine Vorbestellungen angenommen. Aktuell werden Prototyp und Pilotserie vorbereitet.",
+  },
+  {
+    question: "Kann ich Moolino testen?",
+    answer:
+      "Interesse an einem späteren Produkttest kann unverbindlich vorgemerkt werden. Ob und wann ein Test möglich ist, hängt vom weiteren Entwicklungsverlauf und der verfügbaren Pilotserie ab.",
+  },
+  {
+    question: "Ist die Nutzung tierfreundlich gedacht?",
+    answer:
+      "Moolino ist als Vergrämungslösung ohne Gift und ohne Fallen vorgesehen. Die konkrete Ausgestaltung, sachgerechte Anwendung und Bewertung möglicher Auswirkungen sind Teil der laufenden Entwicklung und Erprobung.",
+  },
+];
 ---
 
 <BaseLayout
   title="Moolino"
-  description="Moolino entwickelt eine sanfte, technische Lösung zur Vergrämung von Maulwürfen."
+  description="Moolino entwickelt ein technisches Gerät zur Maulwurfvergrämung durch Vibrationen und Schallimpulse im Boden – derzeit als Entwicklungsprototyp."
 >
-  <section class="hero">
+  <section class="hero" aria-labelledby="hero-title">
     <div class="hero__inner shell">
       <div class="hero__copy">
-        <h1>Ein ruhigerer Garten.<br />Im Einklang mit der Natur.</h1>
+        <h1 id="hero-title">
+          Ruhe im Garten.<br />
+          {" "}Mit Technik, die unter<br />
+          {" "}der Oberfläche arbeitet.
+        </h1>
         <p class="hero__lede">
-          Moolino entwickelt eine sanfte, technische Lösung zur Vergrämung von
-          Maulwürfen – derzeit in Vorbereitung.
+          Moolino wird als technisches Gerät entwickelt, das über Vibrationen
+          und Schallimpulse im Boden dazu beitragen soll, Maulwürfe aus
+          sensiblen Gartenbereichen zu vergrämen – ohne Gift und ohne Fallen.
         </p>
         <div class="hero__actions">
-          <a class="button" href="#projekt">
-            Projekt entdecken
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              width="20"
-              height="20"
-            >
+          <a class="button" href="#neuigkeiten">
+            Neuigkeiten erhalten
+            <svg aria-hidden="true" viewBox="0 0 24 24">
               <path d="M5 12h14m-5-5 5 5-5 5"></path>
             </svg>
           </a>
-          <span class="development-status">Frühe Entwicklungsphase</span>
+          <a class="text-link text-link--arrow" href="#funktionsweise">
+            So funktioniert Moolino
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-5-5 5 5-5 5"></path>
+            </svg>
+          </a>
         </div>
       </div>
 
-      <div class="nature-signal" aria-hidden="true">
-        <div class="sprout">
-          <span class="sprout__stem"></span>
-          <span class="sprout__leaf sprout__leaf--left"></span>
-          <span class="sprout__leaf sprout__leaf--right"></span>
-        </div>
-        <div class="soil-line"></div>
-        <span class="signal signal--one"></span>
-        <span class="signal signal--two"></span>
-        <span class="signal signal--three"></span>
-      </div>
+      <figure class="prototype prototype--hero">
+        <div class="prototype__halo" aria-hidden="true"></div>
+        <img
+          src="/moolino-prototype-front.png"
+          width="1496"
+          height="1051"
+          alt="Grüner Moolino Entwicklungsprototyp mit zylindrischem Gehäuse"
+          fetchpriority="high"
+        />
+        <figcaption>
+          <strong>Aktueller Entwicklungsprototyp</strong>
+          <span>Form, Farbe und Details können sich ändern.</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="hero__earth-line" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+        <path d="M0 54C170 15 316 81 511 51S843 26 1035 55s282-23 405-3"></path>
+        <path d="M0 73c192-27 308 35 487 10s359-18 525 0 296-25 428-15"></path>
+      </svg>
     </div>
   </section>
 
-  <section class="readiness" id="projekt">
-    <div class="readiness__inner shell">
-      <div class="readiness__mark" aria-hidden="true">
-        <span></span>
-      </div>
-      <div>
-        <h2>Bereit für die nächste Wachstumsphase</h2>
+  <section class="problem section" aria-labelledby="problem-title">
+    <div class="problem__inner shell">
+      <div class="section-heading problem__copy">
+        <p class="section-label">Die Ausgangslage</p>
+        <h2 id="problem-title">Wenn Hügel die Gartenruhe stören.</h2>
         <p>
-          Diese Website bildet die technische Grundlage für
-          Produktinformationen, Tests und den späteren Marktstart.
+          Ein Maulwurf arbeitet fast vollständig unter der Erde. Sichtbar
+          werden vor allem seine Erdhügel – mitten im Rasen, zwischen Beeten
+          oder an Wegen. Das kann gepflegte Flächen verändern und zusätzliche
+          Gartenarbeit verursachen.
         </p>
       </div>
+
+      <div class="garden-cutaway" aria-hidden="true">
+        <svg viewBox="0 0 760 360">
+          <path class="garden-cutaway__ground" d="M20 143c95-15 156 10 232-1 75-11 141 5 212-5 84-12 168 5 276-3"></path>
+          <path class="garden-cutaway__hill" d="M404 140c28-47 93-56 130-4"></path>
+          <path class="garden-cutaway__layer" d="M23 185c108-18 196 17 294 0 119-21 185 14 422-6"></path>
+          <path class="garden-cutaway__layer" d="M30 243c100-19 174 12 267-5 89-16 170 12 263-3 67-11 112-7 176-2"></path>
+          <path class="garden-cutaway__tunnel" d="M82 278c74-53 157-26 224-60 55-28 82-71 153-66 45 4 70 37 102 67 31 28 69 43 121 28"></path>
+          <path class="garden-cutaway__plant" d="M160 141v-67m0 30c-24-29-46-19-51-12 15 13 31 20 51 18m1-17c22-28 43-17 48-9-13 12-28 18-48 15"></path>
+          <path class="garden-cutaway__grass" d="M58 143l-8-27m18 27 6-35m13 35 15-23m531 14-2-30m16 30 10-26m11 28 17-18"></path>
+          <circle cx="554" cy="265" r="18"></circle>
+          <path class="garden-cutaway__mole" d="M539 265c5-17 26-23 37-8 9 13-3 25-20 24-15-1-25-8-31-16 6-2 10-2 14 0Zm29-12 10-7m-31 31-7 11m21-9 4 9"></path>
+        </svg>
+      </div>
     </div>
   </section>
+
+  <section
+    class="solution section"
+    id="funktionsweise"
+    aria-labelledby="solution-title"
+  >
+    <div class="solution__inner shell">
+      <div class="section-heading">
+        <p class="section-label">Der Ansatz</p>
+        <h2 id="solution-title">
+          Impulse im Boden – gezielt und zurückhaltend.
+        </h2>
+        <p>
+          Wiederkehrende mechanische Impulse breiten sich im Erdreich aus.
+          Moolino soll dieses bekannte Prinzip technisch steuerbar machen.
+          Welche Einstellungen sinnvoll sind, hängt unter anderem von
+          Bodenbeschaffenheit, Fläche und Umgebung ab.
+        </p>
+        <p class="fine-print">
+          Die Darstellung veranschaulicht das technische Prinzip und ist kein
+          Wirksamkeitsnachweis.
+        </p>
+      </div>
+
+      <div class="soil-principle" aria-hidden="true">
+        <svg viewBox="0 0 700 390">
+          <path class="soil-principle__surface" d="M24 101c97 9 187-5 281 2 111 9 203-9 370 2"></path>
+          <path class="soil-principle__grass" d="m67 100-5-30m17 30 10-38m9 38 17-25m366 27 1-41m15 42 17-34m15 35 21-24"></path>
+          <path class="soil-principle__layer" d="M28 176c104-9 186 7 281-2 101-10 195 8 362-1"></path>
+          <path class="soil-principle__layer" d="M33 257c94-12 164 9 262-3 111-14 190 10 374-5"></path>
+          <path class="soil-principle__wave" d="M274 129c12 31 43 53 80 53 38 0 70-22 83-54"></path>
+          <path class="soil-principle__wave" d="M230 126c18 68 62 109 124 109 64 0 109-42 128-109"></path>
+          <path class="soil-principle__wave" d="M181 123c25 110 83 167 173 167 93 0 151-59 177-167"></path>
+          <g class="soil-principle__soil">
+            <circle cx="104" cy="146" r="3"></circle>
+            <circle cx="151" cy="220" r="4"></circle>
+            <circle cx="575" cy="209" r="3"></circle>
+            <circle cx="622" cy="147" r="4"></circle>
+            <path d="M91 302c11-7 24-6 34 2m423 20c16-9 32-7 43 3"></path>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps section" aria-labelledby="steps-title">
+    <div class="shell">
+      <div class="steps__intro">
+        <p class="section-label">So funktioniert es</p>
+        <h2 id="steps-title">Platzieren. Einschalten. Arbeiten lassen.</h2>
+      </div>
+
+      <ol class="steps__list">
+        <li>
+          <span class="steps__number">01</span>
+          <div>
+            <h3>Platzieren</h3>
+            <p>
+              Den Prototypen an einem geeigneten Ort im Garten anbringen.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="steps__number">02</span>
+          <div>
+            <h3>Einschalten</h3>
+            <p>
+              Das Gerät aktivieren und passend zur Umgebung einstellen.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="steps__number">03</span>
+          <div>
+            <h3>Arbeiten lassen</h3>
+            <p>
+              Moolino soll die vorgesehenen Impulse anschließend selbstständig
+              abgeben.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="advantages section" aria-labelledby="advantages-title">
+    <div class="advantages__inner shell">
+      <div class="section-heading advantages__heading">
+        <p class="section-label">Die Entwicklungsziele</p>
+        <h2 id="advantages-title">Durchdacht für draußen.</h2>
+        <p>
+          Diese Eigenschaften leiten die Entwicklung. Sie beschreiben den
+          angestrebten Produktcharakter und noch keine garantierten Ergebnisse.
+        </p>
+      </div>
+
+      <ul class="advantages__list">
+        {
+          advantages.map((advantage) => (
+            <li>
+              <span class={`line-icon line-icon--${advantage.icon}`} aria-hidden="true">
+                {advantage.icon === "weather" && (
+                  <svg viewBox="0 0 36 36">
+                    <path d="M9 24h18a6 6 0 0 0 1-11.9A10 10 0 0 0 9.3 10 7 7 0 0 0 9 24Z" />
+                    <path d="m12 28-1 3m7-3-1 3m7-3-1 3" />
+                  </svg>
+                )}
+                {advantage.icon === "signal" && (
+                  <svg viewBox="0 0 36 36">
+                    <path d="M6 15a17 17 0 0 1 24 0M10 20a11 11 0 0 1 16 0m-11 5a4 4 0 0 1 6 0" />
+                    <circle cx="18" cy="29" r="1.3" />
+                  </svg>
+                )}
+                {advantage.icon === "leaf" && (
+                  <svg viewBox="0 0 36 36">
+                    <path d="M29 7C16 7 8 13 8 23c0 4 2 6 6 6 10 0 15-9 15-22Z" />
+                    <path d="M8 30c4-8 10-12 17-17" />
+                  </svg>
+                )}
+                {advantage.icon === "open" && (
+                  <svg viewBox="0 0 36 36">
+                    <path d="M7 7h22v22H7zM10 26 26 10" />
+                  </svg>
+                )}
+              </span>
+              <div>
+                <h3>{advantage.title}</h3>
+                <p>{advantage.copy}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section
+    class="development section"
+    id="entwicklung"
+    aria-labelledby="development-title"
+  >
+    <div class="development__inner shell">
+      <div class="development__copy section-heading">
+        <p class="section-label">Entwicklungsstand</p>
+        <h2 id="development-title">
+          Noch im Werden. Schon klar in der Richtung.
+        </h2>
+        <p>
+          Moolino befindet sich in einer frühen Entwicklungsphase. Gehäuse,
+          Elektronik und Steuerung werden schrittweise erprobt; parallel wird
+          eine kleine Pilotserie vorbereitet.
+        </p>
+        <p>
+          Ergebnisse aus dieser Phase fließen in die weitere Gestaltung und
+          technische Ausarbeitung ein. Einen Termin für eine Verfügbarkeit gibt
+          es noch nicht.
+        </p>
+      </div>
+
+      <figure class="prototype prototype--development">
+        <div class="prototype__media">
+          <img
+            src="/moolino-prototype-wide.png"
+            width="2120"
+            height="742"
+            alt="Seitliche Ansicht des grünen Moolino Entwicklungsprototyps"
+            loading="lazy"
+          />
+        </div>
+        <figcaption>
+          <strong>Aktueller Entwicklungsprototyp</strong>
+          <span>Form, Farbe und Details können sich ändern.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section
+    class="newsletter section"
+    id="neuigkeiten"
+    aria-labelledby="newsletter-title"
+  >
+    <div class="newsletter__inner shell">
+      <div class="newsletter__copy">
+        <div class="newsletter__symbol" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <path d="M8 13h32v23H8z"></path>
+            <path d="m9 15 15 12 15-12"></path>
+          </svg>
+        </div>
+        <div class="section-heading">
+          <p class="section-label">Projekt-Updates</p>
+          <h2 id="newsletter-title">Neuigkeiten erhalten</h2>
+          <p>
+            Wir melden uns, wenn es etwas Relevantes zur Entwicklung und zu
+            möglichen Tests zu teilen gibt. Keine Produktversprechen, keine
+            tägliche Post.
+          </p>
+        </div>
+      </div>
+
+      <form class="signup-form" data-preview-form>
+        <label for="newsletter-email">E-Mail-Adresse</label>
+        <div class="signup-form__row">
+          <input
+            id="newsletter-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="name@beispiel.de"
+            required
+          />
+          <button class="button" type="submit">Updates abonnieren</button>
+        </div>
+        <p class="form-note">
+          Der Versand ist in dieser lokalen Vorschau noch nicht aktiv.
+        </p>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section
+    class="tester section"
+    id="produkttest"
+    aria-labelledby="tester-title"
+  >
+    <div class="tester__inner shell">
+      <div class="tester__copy section-heading">
+        <p class="section-label">Pilotphase</p>
+        <h2 id="tester-title">Als Produkttester bewerben</h2>
+        <p>
+          Du möchtest einen frühen Prototypen im eigenen Garten erproben und
+          strukturiertes Feedback geben? Dann kannst du dein Interesse
+          unverbindlich vormerken.
+        </p>
+        <p class="fine-print">
+          Eine Teilnahme ist freiwillig und nicht garantiert. Die Zahl der
+          Geräte in der Pilotserie kann begrenzt sein.
+        </p>
+      </div>
+
+      <form class="tester-form" data-preview-form>
+        <div class="field-grid">
+          <div>
+            <label for="tester-name">Name</label>
+            <input
+              id="tester-name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+            />
+          </div>
+          <div>
+            <label for="tester-email">E-Mail-Adresse</label>
+            <input
+              id="tester-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+        <label for="tester-garden">Kurz zu deinem Garten</label>
+        <textarea
+          id="tester-garden"
+          name="garden"
+          rows="3"
+          placeholder="Zum Beispiel: Größe, Boden, Häufigkeit der Maulwurfshügel"
+        ></textarea>
+        <button class="button button--outline" type="submit">
+          Interesse vormerken
+        </button>
+        <p class="form-note">
+          Der Versand ist in dieser lokalen Vorschau noch nicht aktiv.
+        </p>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="faq section" id="faq" aria-labelledby="faq-title">
+    <div class="faq__inner shell">
+      <div class="faq__heading">
+        <p class="section-label">Wissenswertes</p>
+        <h2 id="faq-title">Häufige Fragen</h2>
+      </div>
+
+      <div class="faq__list">
+        {
+          faqs.map((faq, index) => (
+            <details open={index === 0}>
+              <summary>
+                <span>{faq.question}</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              </summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="contact section"
+    id="kontakt"
+    aria-labelledby="contact-title"
+  >
+    <div class="contact__inner shell">
+      <div class="section-heading">
+        <p class="section-label">Kontakt</p>
+        <h2 id="contact-title">Fragen oder Interesse?</h2>
+        <p>
+          Wir freuen uns über Fragen, Anregungen und ehrliches Interesse am
+          Projekt.
+        </p>
+        <a class="contact__mail" href="mailto:hallo@moolino.de">
+          <svg aria-hidden="true" viewBox="0 0 36 36">
+            <path d="M5 8h26v20H5z"></path>
+            <path d="m6 10 12 10 12-10"></path>
+          </svg>
+          hallo@moolino.de
+        </a>
+      </div>
+
+      <div class="contact__vine" aria-hidden="true">
+        <svg viewBox="0 0 700 260">
+          <path d="M13 229c128-133 246 4 365-70 77-47 163-35 307 33"></path>
+          <path d="M394 148c-16-39-6-70 25-93 12 39 3 69-25 93Zm86-29c7-41 29-66 66-72-4 37-26 61-66 72Zm69 21c31-25 62-28 94-9-24 24-55 27-94 9ZM216 195c-12-34-4-60 24-80 10 33 2 59-24 80Z"></path>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll<HTMLFormElement>("[data-preview-form]").forEach(
+      (form) => {
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          if (!form.reportValidity()) return;
+
+          const status = form.querySelector<HTMLElement>(".form-status");
+          if (status) {
+            status.textContent =
+              "Danke für dein Interesse. In dieser lokalen Vorschau werden noch keine Daten übertragen.";
+          }
+        });
+      },
+    );
+  </script>
 </BaseLayout>

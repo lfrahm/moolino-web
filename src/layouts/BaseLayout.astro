@@ -1,4 +1,5 @@
 ---
+import "@fontsource-variable/nunito";
 import "../styles/global.css";
 
 interface Props {
@@ -10,11 +11,13 @@ const { title, description } = Astro.props;
 const pageTitle = title === "Moolino" ? title : `${title} | Moolino`;
 const isIndexable = import.meta.env.PUBLIC_ALLOW_INDEXING === "true";
 const path = Astro.url.pathname;
+const homePrefix = path === "/" ? "" : "/";
 
 const navItems = [
-  { href: "/", label: "Start" },
-  { href: "/impressum/", label: "Impressum" },
-  { href: "/datenschutz/", label: "Datenschutz" },
+  { href: `${homePrefix}#funktionsweise`, label: "Funktionsweise" },
+  { href: `${homePrefix}#entwicklung`, label: "Entwicklung" },
+  { href: `${homePrefix}#faq`, label: "FAQ" },
+  { href: `${homePrefix}#kontakt`, label: "Kontakt" },
 ];
 ---
 
@@ -50,15 +53,16 @@ const navItems = [
         <nav class="site-nav" aria-label="Hauptnavigation">
           {
             navItems.map((item) => (
-              <a
-                href={item.href}
-                aria-current={path === item.href ? "page" : undefined}
-              >
+              <a href={item.href}>
                 {item.label}
               </a>
             ))
           }
         </nav>
+
+        <a class="button button--header" href={`${homePrefix}#neuigkeiten`}>
+          Neuigkeiten erhalten
+        </a>
       </div>
     </header>
 
@@ -68,11 +72,34 @@ const navItems = [
 
     <footer class="site-footer">
       <div class="site-footer__inner shell">
-        <p>© {new Date().getFullYear()} Moolino</p>
-        <nav aria-label="Rechtliches">
-          <a href="/impressum/">Impressum</a>
-          <a href="/datenschutz/">Datenschutz</a>
-        </nav>
+        <div class="site-footer__brand">
+          <a class="wordmark wordmark--footer" href="/" aria-label="Moolino Startseite">
+            <img
+              class="wordmark__image"
+              src="/moolino-logo.svg"
+              width="300"
+              height="100"
+              alt=""
+              loading="lazy"
+            />
+          </a>
+          <p>Natur verstehen. Technik sinnvoll einsetzen.</p>
+        </div>
+
+        <div class="site-footer__meta">
+          <nav aria-label="Rechtliches">
+            <a href="/impressum/">Impressum</a>
+            <a href="/datenschutz/">Datenschutz</a>
+          </nav>
+          <p>© {new Date().getFullYear()} Moolino</p>
+        </div>
+      </div>
+      <div class="site-footer__ground" aria-hidden="true">
+        <svg viewBox="0 0 1440 70" preserveAspectRatio="none">
+          <path d="M0 43c194-26 285 28 468 4s332-17 512 2 307-27 460-11"></path>
+          <path d="M112 43c6-25 19-35 39-43 4 20-5 34-28 44m28-13c20-18 40-18 58-7-15 17-34 20-58 7"></path>
+          <path d="M1163 41c-5-20-16-29-32-35-4 17 4 28 23 36m-22-10c-17-15-33-14-48-5 13 14 29 16 48 5"></path>
+        </svg>
       </div>
     </footer>
   </body>
