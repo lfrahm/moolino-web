@@ -43,7 +43,7 @@ const faqs = [
   {
     question: "Kann ich Moolino testen?",
     answer:
-      "Interesse an einem späteren Produkttest kann unverbindlich vorgemerkt werden. Ob, wann und unter welchen Voraussetzungen ein Test möglich ist, hängt vom Entwicklungsverlauf, passenden Testumgebungen und der verfügbaren Pilotserie ab. Eine Vormerkung ist weder eine Zusage noch eine Bestellung.",
+      "Mögliche spätere Produkttests hängen vom Entwicklungsverlauf, passenden Testumgebungen und der verfügbaren Pilotserie ab. Eine Anmeldung ist aktuell noch nicht geöffnet. Bei Interesse oder Fragen erreichst du uns unter team@moolino.de.",
   },
   {
     question: "Ist die Nutzung tierfreundlich gedacht?",
@@ -91,12 +91,6 @@ const illustrationImages = {
           sensiblen Gartenbereichen zu vergrämen – ohne Gift und ohne Fallen.
         </p>
         <div class="hero__actions">
-          <a class="button" href="#neuigkeiten">
-            Neuigkeiten erhalten
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M5 12h14m-5-5 5 5-5 5"></path>
-            </svg>
-          </a>
           <a class="text-link text-link--arrow" href="#funktionsweise">
             So funktioniert Moolino
             <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -361,116 +355,6 @@ const illustrationImages = {
     </div>
   </section>
 
-  <section
-    class="newsletter section"
-    id="neuigkeiten"
-    aria-labelledby="newsletter-title"
-  >
-    <div class="newsletter__inner shell">
-      <div class="newsletter__copy">
-        <div class="newsletter__symbol" aria-hidden="true">
-          <svg viewBox="0 0 48 48">
-            <path d="M8 13h32v23H8z"></path>
-            <path d="m9 15 15 12 15-12"></path>
-          </svg>
-        </div>
-        <div class="section-heading">
-          <p class="section-label">Projekt-Updates</p>
-          <h2 id="newsletter-title">Neuigkeiten erhalten</h2>
-          <p>
-            Wir melden uns, wenn es etwas Relevantes zur Entwicklung und zu
-            möglichen Tests zu teilen gibt. Keine Produktversprechen, keine
-            tägliche Post.
-          </p>
-          <ul class="newsletter__topics" aria-label="Inhalte der Projekt-Updates">
-            <li>Entwicklungsstand</li>
-            <li>Mögliche Tests</li>
-          </ul>
-        </div>
-      </div>
-
-      <form class="signup-form" data-preview-form>
-        <label for="newsletter-email">E-Mail-Adresse</label>
-        <div class="signup-form__row">
-          <input
-            id="newsletter-email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            placeholder="name@beispiel.de"
-            required
-          />
-          <button class="button" type="submit">Updates abonnieren</button>
-        </div>
-        <p class="form-note">
-          Der Versand ist in dieser lokalen Vorschau noch nicht aktiv.
-        </p>
-        <p class="form-status" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
-
-  <section
-    class="tester section"
-    id="produkttest"
-    aria-labelledby="tester-title"
-  >
-    <div class="tester__inner shell">
-      <div class="tester__copy section-heading">
-        <p class="section-label">Pilotphase</p>
-        <h2 id="tester-title">Als Produkttester bewerben</h2>
-        <p>
-          Du möchtest einen frühen Prototypen im eigenen Garten erproben und
-          strukturiertes Feedback geben? Dann kannst du dein Interesse
-          unverbindlich vormerken.
-        </p>
-        <p class="fine-print">
-          Eine Teilnahme ist freiwillig und nicht garantiert. Die Zahl der
-          Geräte in der Pilotserie kann begrenzt sein.
-        </p>
-      </div>
-
-      <form class="tester-form" data-preview-form>
-        <div class="field-grid">
-          <div>
-            <label for="tester-name">Name</label>
-            <input
-              id="tester-name"
-              name="name"
-              type="text"
-              autocomplete="name"
-              required
-            />
-          </div>
-          <div>
-            <label for="tester-email">E-Mail-Adresse</label>
-            <input
-              id="tester-email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-            />
-          </div>
-        </div>
-        <label for="tester-garden">Kurz zu deinem Garten</label>
-        <textarea
-          id="tester-garden"
-          name="garden"
-          rows="3"
-          placeholder="Zum Beispiel: Größe, Boden, Häufigkeit der Maulwurfshügel"
-        ></textarea>
-        <button class="button button--outline" type="submit">
-          Interesse vormerken
-        </button>
-        <p class="form-note">
-          Der Versand ist in dieser lokalen Vorschau noch nicht aktiv.
-        </p>
-        <p class="form-status" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
-
   <section class="faq section" id="faq" aria-labelledby="faq-title">
     <div class="faq__inner shell">
       <div class="faq__heading">
@@ -532,22 +416,4 @@ const illustrationImages = {
       </figure>
     </div>
   </section>
-
-  <script>
-    document.querySelectorAll<HTMLFormElement>("[data-preview-form]").forEach(
-      (form) => {
-        form.addEventListener("submit", (event) => {
-          event.preventDefault();
-
-          if (!form.reportValidity()) return;
-
-          const status = form.querySelector<HTMLElement>(".form-status");
-          if (status) {
-            status.textContent =
-              "Danke für dein Interesse. In dieser lokalen Vorschau werden noch keine Daten übertragen.";
-          }
-        });
-      },
-    );
-  </script>
 </BaseLayout>
