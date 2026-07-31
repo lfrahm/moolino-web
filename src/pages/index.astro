@@ -28,29 +28,49 @@ const faqs = [
   {
     question: "Was ist Moolino?",
     answer:
-      "Moolino ist ein Entwicklungsprojekt für ein technisches Gerät zur Maulwurfvergrämung im Garten. Das Gerät befindet sich derzeit im Prototypenstadium.",
+      "Moolino ist ein Entwicklungsprojekt für ein technisches Gerät zur Maulwurfvergrämung im Garten. Der aktuelle Stand ist ein Entwicklungsprototyp: Gehäuse, Elektronik, Steuerung und die spätere Anwendung werden noch erprobt und weiterentwickelt.",
   },
   {
     question: "Wie soll das Prinzip funktionieren?",
     answer:
-      "Moolino soll wiederkehrende Vibrationen und Schallimpulse in den Boden einbringen. Diese mechanischen Impulse breiten sich im Erdreich aus. Wie Tiere darauf reagieren, kann von Boden, Umgebung und Anwendung abhängen und wird im Rahmen der Entwicklung weiter untersucht.",
+      "Moolino soll wiederkehrende Vibrationen und Schallimpulse in den Boden einbringen. Diese mechanischen Impulse breiten sich im Erdreich aus; ihre Wahrnehmung und Wirkung können jedoch je nach Bodenart, Feuchtigkeit, Flächengröße, Umgebung und Anwendung unterschiedlich sein. Die Darstellung auf dieser Seite erklärt das geplante Prinzip, ersetzt aber keine Erprobung am jeweiligen Standort.",
   },
   {
     question: "Ist Moolino bereits erhältlich?",
     answer:
-      "Nein. Moolino ist noch nicht im Verkauf und es werden keine Vorbestellungen angenommen. Aktuell werden Prototyp und Pilotserie vorbereitet.",
+      "Nein. Moolino ist noch nicht im Verkauf und es werden keine Vorbestellungen angenommen. Derzeit werden Prototyp und Pilotserie vorbereitet. Erst aus den Erkenntnissen dieser Entwicklungsphase kann sich ergeben, ob, wann und in welcher Form ein Produkt später verfügbar sein könnte.",
   },
   {
     question: "Kann ich Moolino testen?",
     answer:
-      "Interesse an einem späteren Produkttest kann unverbindlich vorgemerkt werden. Ob und wann ein Test möglich ist, hängt vom weiteren Entwicklungsverlauf und der verfügbaren Pilotserie ab.",
+      "Interesse an einem späteren Produkttest kann unverbindlich vorgemerkt werden. Ob, wann und unter welchen Voraussetzungen ein Test möglich ist, hängt vom Entwicklungsverlauf, passenden Testumgebungen und der verfügbaren Pilotserie ab. Eine Vormerkung ist weder eine Zusage noch eine Bestellung.",
   },
   {
     question: "Ist die Nutzung tierfreundlich gedacht?",
     answer:
-      "Moolino ist als Vergrämungslösung ohne Gift und ohne Fallen vorgesehen. Die konkrete Ausgestaltung, sachgerechte Anwendung und Bewertung möglicher Auswirkungen sind Teil der laufenden Entwicklung und Erprobung.",
+      "Moolino ist als Vergrämungslösung ohne Gift und ohne Fallen vorgesehen. Die konkrete Ausgestaltung, sachgerechte Anwendung und die Bewertung möglicher Auswirkungen auf Tiere und Umgebung sind Teil der laufenden Entwicklung und Erprobung. Bis dahin soll die Anwendung stets zurückhaltend, situationsbezogen und mit Blick auf den Garten als Lebensraum gedacht werden.",
   },
 ];
+
+const heroImages = {
+  active: "/moolino-garden-hero-schematic.webp",
+  previous: "/moolino-garden-hero.webp",
+};
+
+const illustrationImages = {
+  molehills: {
+    active: "/moolino-garden-molehills-schematic.webp",
+    previous: "/moolino-garden-molehills.webp",
+  },
+  impulses: {
+    active: "/moolino-garden-impulses-surface-v2.webp",
+    previous: "/moolino-garden-impulses-schematic.webp",
+  },
+  contact: {
+    active: "/moolino-garden-contact-schematic.webp",
+    previous: "/moolino-garden-contact.webp",
+  },
+};
 ---
 
 <BaseLayout
@@ -61,9 +81,9 @@ const faqs = [
     <div class="hero__inner shell">
       <div class="hero__copy">
         <h1 id="hero-title">
-          Ruhe im Garten.<br />
-          {" "}Mit Technik, die unter<br />
-          {" "}der Oberfläche arbeitet.
+          Gartenruhe.<br />
+          {" "}Vom Boden aus<br />
+          {" "}gedacht.
         </h1>
         <p class="hero__lede">
           Moolino wird als technisches Gerät entwickelt, das über Vibrationen
@@ -86,8 +106,20 @@ const faqs = [
         </div>
       </div>
 
-      <figure class="prototype prototype--hero">
-        <div class="prototype__halo" aria-hidden="true"></div>
+      <!-- To restore the prior local hero, use heroImages.previous as the image source and remove hero-garden--schematic. -->
+      <figure
+        class="hero-garden hero-garden--schematic"
+        data-previous-hero={heroImages.previous}
+      >
+        <img
+          class="hero-garden__art"
+          src={heroImages.active}
+          width="1536"
+          height="1024"
+          alt=""
+          fetchpriority="high"
+        />
+        <div class="hero-garden__prototype">
         <img
           src="/moolino-prototype-front.png"
           width="1496"
@@ -95,6 +127,7 @@ const faqs = [
           alt="Grüner Moolino Entwicklungsprototyp mit zylindrischem Gehäuse"
           fetchpriority="high"
         />
+        </div>
         <figcaption>
           <strong>Aktueller Entwicklungsprototyp</strong>
           <span>Form, Farbe und Details können sich ändern.</span>
@@ -122,19 +155,18 @@ const faqs = [
         </p>
       </div>
 
-      <div class="garden-cutaway" aria-hidden="true">
-        <svg viewBox="0 0 760 360">
-          <path class="garden-cutaway__ground" d="M20 143c95-15 156 10 232-1 75-11 141 5 212-5 84-12 168 5 276-3"></path>
-          <path class="garden-cutaway__hill" d="M404 140c28-47 93-56 130-4"></path>
-          <path class="garden-cutaway__layer" d="M23 185c108-18 196 17 294 0 119-21 185 14 422-6"></path>
-          <path class="garden-cutaway__layer" d="M30 243c100-19 174 12 267-5 89-16 170 12 263-3 67-11 112-7 176-2"></path>
-          <path class="garden-cutaway__tunnel" d="M82 278c74-53 157-26 224-60 55-28 82-71 153-66 45 4 70 37 102 67 31 28 69 43 121 28"></path>
-          <path class="garden-cutaway__plant" d="M160 141v-67m0 30c-24-29-46-19-51-12 15 13 31 20 51 18m1-17c22-28 43-17 48-9-13 12-28 18-48 15"></path>
-          <path class="garden-cutaway__grass" d="M58 143l-8-27m18 27 6-35m13 35 15-23m531 14-2-30m16 30 10-26m11 28 17-18"></path>
-          <circle cx="554" cy="265" r="18"></circle>
-          <path class="garden-cutaway__mole" d="M539 265c5-17 26-23 37-8 9 13-3 25-20 24-15-1-25-8-31-16 6-2 10-2 14 0Zm29-12 10-7m-31 31-7 11m21-9 4 9"></path>
-        </svg>
-      </div>
+      <figure
+        class="garden-illustration garden-illustration--molehills"
+        data-previous-illustration={illustrationImages.molehills.previous}
+      >
+        <img
+          src={illustrationImages.molehills.active}
+          width="1280"
+          height="711"
+          alt="Illustration eines Gartens mit mehreren deutlich sichtbaren Maulwurfshügeln im Rasen"
+          loading="lazy"
+        />
+      </figure>
     </div>
   </section>
 
@@ -161,24 +193,18 @@ const faqs = [
         </p>
       </div>
 
-      <div class="soil-principle" aria-hidden="true">
-        <svg viewBox="0 0 700 390">
-          <path class="soil-principle__surface" d="M24 101c97 9 187-5 281 2 111 9 203-9 370 2"></path>
-          <path class="soil-principle__grass" d="m67 100-5-30m17 30 10-38m9 38 17-25m366 27 1-41m15 42 17-34m15 35 21-24"></path>
-          <path class="soil-principle__layer" d="M28 176c104-9 186 7 281-2 101-10 195 8 362-1"></path>
-          <path class="soil-principle__layer" d="M33 257c94-12 164 9 262-3 111-14 190 10 374-5"></path>
-          <path class="soil-principle__wave" d="M274 129c12 31 43 53 80 53 38 0 70-22 83-54"></path>
-          <path class="soil-principle__wave" d="M230 126c18 68 62 109 124 109 64 0 109-42 128-109"></path>
-          <path class="soil-principle__wave" d="M181 123c25 110 83 167 173 167 93 0 151-59 177-167"></path>
-          <g class="soil-principle__soil">
-            <circle cx="104" cy="146" r="3"></circle>
-            <circle cx="151" cy="220" r="4"></circle>
-            <circle cx="575" cy="209" r="3"></circle>
-            <circle cx="622" cy="147" r="4"></circle>
-            <path d="M91 302c11-7 24-6 34 2m423 20c16-9 32-7 43 3"></path>
-          </g>
-        </svg>
-      </div>
+      <figure
+        class="garden-illustration garden-illustration--impulses"
+        data-previous-illustration={illustrationImages.impulses.previous}
+      >
+        <img
+          src={illustrationImages.impulses.active}
+          width="1280"
+          height="853"
+          alt="Schematische Gartenillustration mit einem auf der Rasenoberfläche liegenden Moolino Entwicklungsprototyp und sich im Boden ausbreitenden Impulswellen"
+          loading="lazy"
+        />
+      </figure>
     </div>
   </section>
 
@@ -218,7 +244,28 @@ const faqs = [
             </p>
           </div>
         </li>
+        <li>
+          <span class="steps__number">04</span>
+          <div>
+            <h3>App steuern</h3>
+            <p>
+              Mit der App lassen sich das Gerät steuern und Betriebszeiten
+              festlegen.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="steps__number">05</span>
+          <div>
+            <h3>Flexibel pausieren</h3>
+            <p>
+              Für ausgewählte Zeiträume lässt sich der Betrieb vorübergehend
+              pausieren.
+            </p>
+          </div>
+        </li>
       </ol>
+
     </div>
   </section>
 
@@ -335,6 +382,10 @@ const faqs = [
             möglichen Tests zu teilen gibt. Keine Produktversprechen, keine
             tägliche Post.
           </p>
+          <ul class="newsletter__topics" aria-label="Inhalte der Projekt-Updates">
+            <li>Entwicklungsstand</li>
+            <li>Mögliche Tests</li>
+          </ul>
         </div>
       </div>
 
@@ -458,21 +509,27 @@ const faqs = [
           Wir freuen uns über Fragen, Anregungen und ehrliches Interesse am
           Projekt.
         </p>
-        <a class="contact__mail" href="mailto:hallo@moolino.de">
+        <a class="contact__mail" href="mailto:team@moolino.de">
           <svg aria-hidden="true" viewBox="0 0 36 36">
             <path d="M5 8h26v20H5z"></path>
             <path d="m6 10 12 10 12-10"></path>
           </svg>
-          hallo@moolino.de
+          team@moolino.de
         </a>
       </div>
 
-      <div class="contact__vine" aria-hidden="true">
-        <svg viewBox="0 0 700 260">
-          <path d="M13 229c128-133 246 4 365-70 77-47 163-35 307 33"></path>
-          <path d="M394 148c-16-39-6-70 25-93 12 39 3 69-25 93Zm86-29c7-41 29-66 66-72-4 37-26 61-66 72Zm69 21c31-25 62-28 94-9-24 24-55 27-94 9ZM216 195c-12-34-4-60 24-80 10 33 2 59-24 80Z"></path>
-        </svg>
-      </div>
+      <figure
+        class="contact__visual"
+        data-previous-illustration={illustrationImages.contact.previous}
+      >
+        <img
+          src={illustrationImages.contact.active}
+          width="1280"
+          height="692"
+          alt="Botanische Gartenillustration mit einem dezenten Briefumschlag"
+          loading="lazy"
+        />
+      </figure>
     </div>
   </section>
 

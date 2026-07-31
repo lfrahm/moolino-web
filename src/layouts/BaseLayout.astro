@@ -32,7 +32,18 @@ const navItems = [
       name="robots"
       content={isIndexable ? "index, follow" : "noindex, nofollow"}
     />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/moolino-favicon-32.png"
+    />
+    <link rel="icon" type="image/svg+xml" href="/moolino-favicon-mole.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/moolino-apple-touch-icon.png"
+    />
     <title>{pageTitle}</title>
   </head>
   <body>
@@ -40,14 +51,19 @@ const navItems = [
 
     <header class="site-header">
       <div class="site-header__inner shell">
-        <a class="wordmark" href="/" aria-label="Moolino Startseite">
+        <a
+          class="wordmark wordmark--header"
+          href="/"
+          aria-label="Moolino Startseite"
+        >
           <img
-            class="wordmark__image"
-            src="/moolino-logo.svg"
-            width="300"
+            class="wordmark__mark"
+            src="/moolino-mole-mark.svg"
+            width="100"
             height="100"
             alt=""
           />
+          <span class="wordmark__text">Moolino</span>
         </a>
 
         <nav class="site-nav" aria-label="Hauptnavigation">
