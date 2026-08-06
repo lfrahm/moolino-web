@@ -129,7 +129,7 @@ figure {
 
 .site-header__inner {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: clamp(1.5rem, 3vw, 3rem);
   min-height: 5.75rem;
@@ -180,6 +180,7 @@ figure {
 }
 
 .site-nav {
+  grid-column: 2;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -230,6 +231,14 @@ figure {
   border-color: var(--color-accent-deep);
   background: var(--color-accent-deep);
   transform: translateY(-1px);
+}
+
+.header-contact {
+  grid-column: 3;
+  min-height: 2.9rem;
+  padding: 0.62rem 1.1rem;
+  font-size: 0.94rem;
+  white-space: nowrap;
 }
 
 .button svg,
@@ -993,6 +1002,7 @@ figure {
   }
 
   .site-header__inner {
+    gap: 0.75rem;
     min-height: 4.8rem;
   }
 
@@ -1007,6 +1017,12 @@ figure {
 
   .wordmark__text {
     font-size: 1.05rem;
+  }
+
+  .header-contact {
+    min-height: 2.65rem;
+    padding: 0.56rem 0.82rem;
+    font-size: 0.86rem;
   }
 
   .wordmark--footer {
